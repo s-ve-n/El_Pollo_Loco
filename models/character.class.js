@@ -31,13 +31,13 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
-    'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'
+    'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png',
   ];
 
   IMAGES_HURT = [
     'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-41.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-42.png',
-    'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png'
+    'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png',
   ];
 
   world;
@@ -76,7 +76,7 @@ class Character extends MovableObject {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT); 
+        this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       } else {
@@ -85,9 +85,5 @@ class Character extends MovableObject {
         }
       }
     }, 50);
-  }
-
-  jump() {
-    this.speedY = 30;
   }
 }
