@@ -30,7 +30,10 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.D) {
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+      let bottle = new ThrowableObject(
+        this.character.x + 100,
+        this.character.y + 100
+      );
       this.throwableObjects.push(bottle);
     }
   }
@@ -61,9 +64,13 @@ class World {
 
     this.ctx.translate(-this.camera_x, 0);
 
-    let self = this;
-    requestAnimationFrame(function () {
-      self.draw();
+    // let self = this;
+    // requestAnimationFrame(function () {
+    //   self.draw();
+    // });
+
+    requestAnimationFrame(() => {
+      this.draw();
     });
   }
 
