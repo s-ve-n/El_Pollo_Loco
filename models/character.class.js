@@ -85,5 +85,14 @@ class Character extends MovableObject {
         }
       }
     }, 50);
+
+    // this.playAnimationInterval = setInterval(() => {
+    //   if (this.isDead()) {
+    //     this.playAnimation(this.IMAGES_DEAD);
+    //     setTimeout(() => {
+    //       clearInterval(this.playAnimationInterval);
+    //     }, 2000);
+    //   }
+    // }, 200);
   }
 }
