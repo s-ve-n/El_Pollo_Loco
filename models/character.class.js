@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-  y = 80;
+  y = 180;
   height = 250;
   speed = 10;
   IMAGES_WALKING = [
@@ -43,7 +43,8 @@ class Character extends MovableObject {
   world;
 
   constructor() {
-    super().loadImage(
+    super();
+    this.loadImage(
       'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png'
     );
     this.loadImages(this.IMAGES_WALKING);
@@ -73,9 +74,9 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-      } else if (this.isHurt()) {
+      // if (this.isDead()) {
+      //   this.playAnimation(this.IMAGES_DEAD);
+      /*} else*/ if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
@@ -86,13 +87,13 @@ class Character extends MovableObject {
       }
     }, 50);
 
-    // this.playAnimationInterval = setInterval(() => {
-    //   if (this.isDead()) {
-    //     this.playAnimation(this.IMAGES_DEAD);
-    //     setTimeout(() => {
-    //       clearInterval(this.playAnimationInterval);
-    //     }, 2000);
-    //   }
-    // }, 200);
+    this.playAnimationInterval = setInterval(() => {
+      if (this.isDead()) {
+        this.playAnimation(this.IMAGES_DEAD);
+        setTimeout(() => {
+          clearInterval(this.playAnimationInterval);
+        }, 2000);
+      }
+    }, 200);
   }
 }
