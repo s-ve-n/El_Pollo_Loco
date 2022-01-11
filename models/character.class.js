@@ -89,8 +89,8 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_DEAD);
         setTimeout(() => {
           clearInterval(this.playAnimationInterval);
-        }, 2000);
+        }, 400);
       }
-    }, 200);
+    }, 400);
   }
 }
