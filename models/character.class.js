@@ -1,7 +1,7 @@
 class Character extends MovableObject {
   y = 180;
   height = 250;
-  speed = 10;
+  speed = 5;
   IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -21,7 +21,6 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-37.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-38.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-39.png',
-    'img/2.Secuencias_Personaje-Pepe-corrección/3.Secuencia_salto/J-40.png',
   ];
 
   IMAGES_DEAD = [
@@ -39,8 +38,6 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-42.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png',
   ];
-
-  // world;
 
   constructor() {
     super();
@@ -85,7 +82,7 @@ class Character extends MovableObject {
           this.playAnimation(this.IMAGES_WALKING);
         }
       }
-    }, 50);
+    }, 100);
 
     this.playAnimationInterval = setInterval(() => {
       if (this.isDead()) {
