@@ -40,7 +40,7 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png',
   ];
 
-  world;
+  // world;
 
   constructor() {
     super();
