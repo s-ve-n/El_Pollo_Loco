@@ -9,13 +9,9 @@ class World {
   constructor(canvas, keyboard) {
     this.canvas = canvas;
     this.keyboard = keyboard;
-    this.draw();
-    this.setWorld();
-    this.run();
-  }
-
-  setWorld() {
     this.character.world = this;
+    this.draw();
+    this.run();
   }
 
   run() {
