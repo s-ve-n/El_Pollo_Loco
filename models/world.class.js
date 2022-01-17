@@ -68,14 +68,14 @@ class World {
   addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
-      console.log('first');
+      // console.log('first');
     }
     mo.draw(this.ctx);
     // mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
       this.flipImage(mo);
-      console.log('second');
+      // console.log('second');
     }
   }
 
