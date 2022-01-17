@@ -29,7 +29,7 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
-    'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'
+    'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
   ];
 
   IMAGES_HURT = [
@@ -67,7 +67,11 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && this.energy > 0) {
+      if (
+        this.world.keyboard.RIGHT &&
+        this.x < this.world.level.level_end_x &&
+        this.energy > 0
+      ) {
         this.moveRight();
         this.otherDirection = false;
       }
@@ -76,7 +80,11 @@ class Character extends MovableObject {
         this.otherDirection = true;
       }
 
-      if (this.world.keyboard.SPACE && !this.isAboveGround() && this.energy > 0) {
+      if (
+        this.world.keyboard.SPACE &&
+        !this.isAboveGround() &&
+        this.energy > 0
+      ) {
         this.jump();
       }
 
@@ -84,9 +92,12 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-        if ((this.world.keyboard.RIGHT  || this.world.keyboard.LEFT) && this.energy > 0) {
-          this.playAnimation(this.IMAGES_WALKING);
-        }
+      if (
+        (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) &&
+        this.energy > 0
+      ) {
+        this.playAnimation(this.IMAGES_WALKING);
+      }
     }, 100);
 
     setInterval(() => {
@@ -94,7 +105,6 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_HURT);
       }
     }, 100);
-
 
     this.playAnimationJumping = setInterval(() => {
       if (this.isAboveGround()) {
@@ -114,14 +124,16 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    
+    let timesRun = 0;
     let playAnimationDead = setInterval(() => {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
-      setTimeout(() => {
-        clearInterval(playAnimationDead);
-      }, 1050);
-    }
-    }, 1000);
+        timesRun++;
+        if (timesRun === 1) clearInterval(playAnimationDead);
+        // setTimeout(() => {
+        //   clearInterval(playAnimationDead);
+        // }, 500);
+      }
+    }, 500);
   }
 }
