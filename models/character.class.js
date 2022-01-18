@@ -94,7 +94,8 @@ class Character extends MovableObject {
     setInterval(() => {
       if (
         (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) &&
-        this.energy > 0
+        this.energy > 0 &&
+        !this.isAboveGround()
       ) {
         this.playAnimation(this.IMAGES_WALKING);
       }
@@ -106,7 +107,7 @@ class Character extends MovableObject {
       }
     }, 100);
 
-    this.playAnimationJumping = setInterval(() => {
+    setInterval(() => {
       if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       }
