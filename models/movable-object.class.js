@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
   acceleration = 1;
   energy = 100;
   lastHit = 0;
+  jumpcounter = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -68,5 +69,9 @@ class MovableObject extends DrawableObject {
 
   jump() {
     this.speedY = 20;
+    this.jumpcounter = 1
+    setTimeout(() => {
+      this.jumpcounter--;
+    }, 800)
   }
 }
