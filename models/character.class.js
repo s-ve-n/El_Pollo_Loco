@@ -2,6 +2,7 @@ class Character extends MovableObject {
   y = 180;
   height = 250;
   speed = 7.5;
+  dead = false;
   IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -126,16 +127,42 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    let timesRun = 0;
-    let playAnimationDead = setInterval(() => {
+    setInterval(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        timesRun++;
-        if (timesRun === 1) clearInterval(playAnimationDead);
-        // setTimeout(() => {
-        //   clearInterval(playAnimationDead);
-        // }, 500);
+        this.dead = true;
       }
-    }, 500);
+    }, 1000 / 60);
+
+    let timesRun = 0;
+    let interval = setInterval(() => {
+      if (this.dead == true) {
+        playdead();
+        timesRun++;
+        if (timesRun == 1) {
+          clearInterval(interval);
+        }
+      }
+    }, 1000 / 60);
+
+    let playdead = () => {
+      let playAnimationDead = setInterval(() => {
+        console.log(this.dead);
+        this.playAnimation(this.IMAGES_DEAD);
+        console.log('dead');
+        setTimeout(() => {
+          clearInterval(playAnimationDead);
+        }, 1000);
+      }, 1000);
+    };
+
+    // setInterval(() => {
+    //   setTimeout(() => {
+    //     if (this.isDead()) {
+    //       this.loadImage(
+    //         'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'
+    //       );
+    //     }
+    //   }, 1000);
+    // }, 1000 / 60);
   }
 }
