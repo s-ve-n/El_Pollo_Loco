@@ -100,17 +100,9 @@ class Character extends MovableObject {
         !this.isAboveGround()
       ) {
         this.playAnimation(this.IMAGES_WALKING);
-      }
-    }, 100);
-
-    setInterval(() => {
-      if (this.isHurt() && this.energy > 0) {
+      } else if (this.isHurt() && this.energy > 0) {
         this.playAnimation(this.IMAGES_HURT);
-      }
-    }, 100);
-
-    setInterval(() => {
-      if (this.isAboveGround()) {
+      } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       }
     }, 100);
@@ -127,33 +119,44 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    setInterval(() => {
+    let playAnimationDead = setInterval(() => {
       if (this.isDead()) {
-        this.dead = true;
-      }
-    }, 1000 / 60);
-
-    let timesRun = 0;
-    let interval = setInterval(() => {
-      if (this.dead == true) {
-        playdead();
-        timesRun++;
-        if (timesRun == 1) {
-          clearInterval(interval);
-        }
-      }
-    }, 1000 / 60);
-
-    let playdead = () => {
-      let playAnimationDead = setInterval(() => {
-        console.log(this.dead);
+        console.log('dead-1');
         this.playAnimation(this.IMAGES_DEAD);
-        console.log('dead');
+        console.log('dead-2');
         setTimeout(() => {
           clearInterval(playAnimationDead);
-        }, 1000);
-      }, 1000);
-    };
+        }, 500);
+      }
+    }, 500);
+
+    // setInterval(() => {
+    //   if (this.isDead()) {
+    //     this.dead = true;
+    //   }
+    // }, 1000 / 60);
+
+    // let timesRun = 0;
+    // let interval = setInterval(() => {
+    //   if (this.dead == true) {
+    //     playdead();
+    //     timesRun++;
+    //     if (timesRun == 1) {
+    //       clearInterval(interval);
+    //     }
+    //   }
+    // }, 1000 / 60);
+
+    // let playdead = () => {
+    //   let playAnimationDead = setInterval(() => {
+    //     console.log(this.dead);
+    //     this.playAnimation(this.IMAGES_DEAD);
+    //     console.log('dead');
+    //     setTimeout(() => {
+    //       clearInterval(playAnimationDead);
+    //     }, 1000);
+    //   }, 1000);
+    // };
 
     // setInterval(() => {
     //   setTimeout(() => {
