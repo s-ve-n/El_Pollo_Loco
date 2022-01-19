@@ -121,12 +121,10 @@ class Character extends MovableObject {
 
     let playAnimationDead = setInterval(() => {
       if (this.isDead()) {
-        console.log('dead-1');
         this.playAnimation(this.IMAGES_DEAD);
-        console.log('dead-2');
         setTimeout(() => {
           clearInterval(playAnimationDead);
-        }, 500);
+        }, 0);
       }
     }, 500);
 
