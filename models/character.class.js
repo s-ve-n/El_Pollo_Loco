@@ -64,6 +64,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
+    this.deadAnimation();
   }
 
   animate() {
@@ -119,14 +120,14 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    let playAnimationDead = setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        setTimeout(() => {
-          clearInterval(playAnimationDead);
-        }, 0);
-      }
-    }, 500);
+    // let playAnimationDead = setInterval(() => {
+    //   if (this.isDead()) {
+    //     this.playAnimation(this.IMAGES_DEAD);
+    //     // setTimeout(() => {
+    //       clearInterval(playAnimationDead);
+    //     // }, 0);
+    //   }
+    // }, 500);
 
     // setInterval(() => {
     //   if (this.isDead()) {
@@ -137,7 +138,7 @@ class Character extends MovableObject {
     // let timesRun = 0;
     // let interval = setInterval(() => {
     //   if (this.dead == true) {
-    //     playdead();
+    //     playDead();
     //     timesRun++;
     //     if (timesRun == 1) {
     //       clearInterval(interval);
@@ -145,15 +146,13 @@ class Character extends MovableObject {
     //   }
     // }, 1000 / 60);
 
-    // let playdead = () => {
+    // let playDead = () => {
     //   let playAnimationDead = setInterval(() => {
-    //     console.log(this.dead);
     //     this.playAnimation(this.IMAGES_DEAD);
-    //     console.log('dead');
     //     setTimeout(() => {
     //       clearInterval(playAnimationDead);
-    //     }, 1000);
-    //   }, 1000);
+    //     }, 0);
+    //   }, 500);
     // };
 
     // setInterval(() => {
@@ -165,5 +164,25 @@ class Character extends MovableObject {
     //     }
     //   }, 1000);
     // }, 1000 / 60);
+  }
+
+  deadAnimation() {
+    let i = 0;
+    let deadtimer = setInterval(() => {
+      if (this.isDead()) {
+        this.img.src = this.IMAGES_DEAD[i];
+        i++;
+        if (i == this.IMAGES_DEAD.length) {
+          clearInterval(deadtimer);
+        }
+      }
+    }, 500);
+
+    // let playAnimationDead = setInterval(() => {
+    //   if (this.isDead()) {
+    //     this.playAnimation(this.IMAGES_DEAD);
+    //       clearInterval(playAnimationDead);
+    //   }
+    // }, 500);
   }
 }
