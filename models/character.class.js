@@ -64,7 +64,6 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
-    this.deadAnimation();
   }
 
   animate() {
@@ -101,9 +100,11 @@ class Character extends MovableObject {
         !this.isAboveGround()
       ) {
         this.playAnimation(this.IMAGES_WALKING);
-      } else if (this.isHurt() && this.energy > 0) {
+      }
+      if (this.isHurt() && this.energy > 0) {
         this.playAnimation(this.IMAGES_HURT);
-      } else if (this.isAboveGround()) {
+      }
+      if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       }
     }, 100);
@@ -120,69 +121,20 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    // let playAnimationDead = setInterval(() => {
-    //   if (this.isDead()) {
-    //     this.playAnimation(this.IMAGES_DEAD);
-    //     // setTimeout(() => {
-    //       clearInterval(playAnimationDead);
-    //     // }, 0);
-    //   }
-    // }, 500);
-
-    // setInterval(() => {
-    //   if (this.isDead()) {
-    //     this.dead = true;
-    //   }
-    // }, 1000 / 60);
-
-    // let timesRun = 0;
-    // let interval = setInterval(() => {
-    //   if (this.dead == true) {
-    //     playDead();
-    //     timesRun++;
-    //     if (timesRun == 1) {
-    //       clearInterval(interval);
-    //     }
-    //   }
-    // }, 1000 / 60);
-
-    // let playDead = () => {
-    //   let playAnimationDead = setInterval(() => {
-    //     this.playAnimation(this.IMAGES_DEAD);
-    //     setTimeout(() => {
-    //       clearInterval(playAnimationDead);
-    //     }, 0);
-    //   }, 500);
-    // };
-
-    // setInterval(() => {
-    //   setTimeout(() => {
-    //     if (this.isDead()) {
-    //       this.loadImage(
-    //         'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'
-    //       );
-    //     }
-    //   }, 1000);
-    // }, 1000 / 60);
-  }
-
-  deadAnimation() {
     let i = 0;
-    let deadtimer = setInterval(() => {
+    let interval = setInterval(() => {
       if (this.isDead()) {
         this.img.src = this.IMAGES_DEAD[i];
         i++;
-        if (i == this.IMAGES_DEAD.length) {
-          clearInterval(deadtimer);
-        }
+        if (i == this.IMAGES_DEAD.length) clearInterval(interval);
       }
     }, 500);
 
-    // let playAnimationDead = setInterval(() => {
-    //   if (this.isDead()) {
-    //     this.playAnimation(this.IMAGES_DEAD);
-    //       clearInterval(playAnimationDead);
-    //   }
-    // }, 500);
-  }
+  //   let interval = setInterval(() => {
+  //     if (this.isDead()) {
+  //       this.playAnimation(this.IMAGES_DEAD);
+  //         clearInterval(interval);
+  //     }
+  //   }, 500);
+  // }
 }
