@@ -1,7 +1,7 @@
 class Character extends MovableObject {
   y = 180;
   height = 250;
-  speed = 7.5;
+  speed = 3.5;
   dead = false;
   IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
@@ -64,6 +64,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
+    this.test();
   }
 
   animate() {
@@ -91,7 +92,11 @@ class Character extends MovableObject {
       }
 
       this.world.camera_x = -this.x + 100;
-    }, 1000 / 60);
+
+      if (this.isDead()) {
+        this.dead = true;
+      }
+    }, 1000 / 100);
 
     setInterval(() => {
       if (
@@ -130,12 +135,6 @@ class Character extends MovableObject {
     //   }
     // }, 500);
 
-    setInterval(() => {
-      if (this.isDead()) {
-        console.log(this.currentImage);
-      }
-    }, 1000 / 60);
-
     let timesRun = 0;
     let interval1 = setInterval(() => {
       if (this.isDead()) {
@@ -152,6 +151,10 @@ class Character extends MovableObject {
         timesRun2++;
         if (timesRun2 == 6) clearInterval(interval2);
       }
-    }, 500);
+    }, 200);
+  }
+
+  test() {
+    if (this.dead) console.log(this.dead);
   }
 }
