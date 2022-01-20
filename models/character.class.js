@@ -121,20 +121,37 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    let i = 0;
-    let interval = setInterval(() => {
+    // let i = 0;
+    // let interval = setInterval(() => {
+    //   if (this.isDead()) {
+    //     this.img.src = this.IMAGES_DEAD[i];
+    //     i++;
+    //     if (i == this.IMAGES_DEAD.length) clearInterval(interval);
+    //   }
+    // }, 500);
+
+    setInterval(() => {
       if (this.isDead()) {
-        this.img.src = this.IMAGES_DEAD[i];
-        i++;
-        if (i == this.IMAGES_DEAD.length) clearInterval(interval);
+        console.log(this.currentImage);
+      }
+    }, 1000 / 60);
+
+    let timesRun = 0;
+    let interval1 = setInterval(() => {
+      if (this.isDead()) {
+        this.currentImage = 0;
+        timesRun++;
+        if (timesRun == 1) clearInterval(interval1);
+      }
+    }, 1000 / 60);
+
+    let timesRun2 = 0;
+    let interval2 = setInterval(() => {
+      if (this.isDead()) {
+        this.playAnimation(this.IMAGES_DEAD);
+        timesRun2++;
+        if (timesRun2 == 6) clearInterval(interval2);
       }
     }, 500);
-
-  //   let interval = setInterval(() => {
-  //     if (this.isDead()) {
-  //       this.playAnimation(this.IMAGES_DEAD);
-  //         clearInterval(interval);
-  //     }
-  //   }, 500);
   }
 }
