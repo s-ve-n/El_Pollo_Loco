@@ -147,6 +147,7 @@ class Character extends MovableObject {
     //   }
     // }, 500);
 
+    // 60 mal pro Sekunde prüfen, ob isDead() true liefert und dann this.currentImage auf 0 setzen, aber nur einmal und dann sofort das Intervall beenden:
     let timesRun = 0;
     let interval1 = setInterval(() => {
       if (this.isDead()) {
@@ -157,6 +158,7 @@ class Character extends MovableObject {
       }
     }, 1000 / 60);
 
+    // this.playAnimation(this.IMAGES_DEAD) starten, wenn isDead() true liefert und dann alle 200ms einmal this.playAnimation(this.IMAGES_DEAD) ausführen bis timesRun2 == 6 liefert, da IMAGES_DEAD 6 Bilder hat, und dann das Intervall beenden:
     let timesRun2 = 0;
     let interval2 = setInterval(() => {
       if (this.isDead()) {
