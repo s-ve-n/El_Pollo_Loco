@@ -2,7 +2,6 @@ class Character extends MovableObject {
   y = 180;
   height = 250;
   speed = 3.5;
-  dead = false;
   IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -52,6 +51,21 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.png',
   ];
 
+  dead = {
+    dead: false,
+    deadListener: function (val) {},
+    set deadValue(val) {
+      this.dead = val;
+      this.deadListener(val);
+    },
+    get deadValue() {
+      return this.dead;
+    },
+    registerListener: function (listener) {
+      this.deadListener = listener;
+    },
+  };
+
   constructor() {
     super();
     this.loadImage(
@@ -64,7 +78,9 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
-    this.test();
+    this.dead.registerListener(function (val) {
+      console.log(`character dead: ${val}`);
+    });
   }
 
   animate() {
@@ -92,10 +108,6 @@ class Character extends MovableObject {
       }
 
       this.world.camera_x = -this.x + 100;
-
-      if (this.isDead()) {
-        this.dead = true;
-      }
     }, 1000 / 100);
 
     setInterval(() => {
@@ -139,6 +151,7 @@ class Character extends MovableObject {
     let interval1 = setInterval(() => {
       if (this.isDead()) {
         this.currentImage = 0;
+        this.dead.deadValue = true;
         timesRun++;
         if (timesRun == 1) clearInterval(interval1);
       }
@@ -152,9 +165,5 @@ class Character extends MovableObject {
         if (timesRun2 == 6) clearInterval(interval2);
       }
     }, 200);
-  }
-
-  test() {
-    if (this.dead) console.log(this.dead);
   }
 }
