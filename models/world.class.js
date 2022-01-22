@@ -3,7 +3,8 @@ class World {
   character = new Character();
   level = new Level();
   camera_x = 0;
-  statusBarHealth = new StatusBar();
+  statusBarHealth = new StatusBarHealth();
+  statusBarBottles = new StatusBarBottles();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
   throwableobject = new ThrowableObject();
@@ -56,6 +57,7 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
+    this.addToMap(this.statusBarBottles);
     this.addToMap(this.startscreen);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
