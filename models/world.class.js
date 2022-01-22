@@ -3,15 +3,17 @@ class World {
   character = new Character();
   level = new Level();
   camera_x = 0;
-  statusBar = new StatusBar();
+  statusBarHealth = new StatusBar();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
+  throwableobject = new ThrowableObject();
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
     this.keyboard = keyboard;
     this.character.world = this;
     this.startscreen.world = this;
+    this.throwableobject.world = this;
     this.draw();
     this.run();
   }
@@ -37,7 +39,7 @@ class World {
     this.level.chickens.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
-        this.statusBar.setPercent(this.character.energy);
+        this.statusBarHealth.setPercent(this.character.energy);
       }
     });
   }
@@ -53,7 +55,7 @@ class World {
     this.addObjectsToMap(this.level.chickens);
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
-    this.addToMap(this.statusBar);
+    this.addToMap(this.statusBarHealth);
     this.addToMap(this.startscreen);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
