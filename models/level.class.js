@@ -1,5 +1,6 @@
 class Level {
   level_end_x = 3800;
+  bottles = [];
   clouds = [];
   chickens = [];
   backgroundObjects = [];
@@ -9,6 +10,7 @@ class Level {
     this.addClouds();
     this.addChickens();
     this.addBackgroundObjects();
+    this.addBottles();
   }
 
   addClouds() {
@@ -20,6 +22,12 @@ class Level {
   addChickens() {
     for (let i = 0; i < 5; i++) {
       this.chickens[i] = new Chicken();
+    }
+  }
+
+  addBottles() {
+    for (let i = 0; i < 10; i++) {
+      this.bottles[i] = new Bottle();
     }
   }
 

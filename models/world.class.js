@@ -50,10 +50,11 @@ class World {
 
     this.ctx.translate(this.camera_x, 0); // move the camera
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.addToMap(this.character);
     this.addToMap(this.level.endboss);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.chickens);
+    this.addObjectsToMap(this.level.bottles);
+    this.addToMap(this.character);
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);

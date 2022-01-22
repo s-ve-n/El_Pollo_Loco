@@ -17,6 +17,6 @@ class Startscreen extends DrawableObject {
 
   chickenSpeed() {
     for (let i = 0; i < this.world.level.chickens.length; i++)
-      this.world.level.chickens[i].speed = 1 + Math.random() * 0.5;
+      this.world.level.chickens[i].speed = 0.5 + Math.random() * 0.5;
   }
 }
