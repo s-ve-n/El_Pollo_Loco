@@ -23,8 +23,11 @@
     <script src="models/endboss.class.js"></script>
     <script src="js/game.js"></script>
   </head>
-  <body onload="init()">
-    <canvas id="canvas" width="720" height="480" onclick="world.startscreen.removeStartscreen()"></canvas>
+  <body
+    onload="init()"
+    onkeydown="if (event.code == 'Space' || 'Enter')world.startscreen.removeStartscreen()"
+  >
+    <canvas id="canvas" width="720" height="480"></canvas>
     <p class="controls">Controls:</p>
     <p class="movement">Move right: Push Right Arrow</p>
   </body>
