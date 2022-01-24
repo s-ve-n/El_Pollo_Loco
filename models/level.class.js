@@ -20,13 +20,13 @@ class Level {
   }
 
   addChickens() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1; i++) {
       this.chickens[i] = new Chicken();
     }
   }
 
   addBottles() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       this.bottles[i] = new Bottle();
     }
   }

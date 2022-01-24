@@ -1,4 +1,4 @@
-class Bottle extends DrawableObject {
+class Bottle extends MovableObject {
   static lastx = 100;
   x = Bottle.lastx + Math.random() * 500;
   y = 360;
@@ -26,6 +26,7 @@ class Bottle extends DrawableObject {
   }
 
   // this.bottles[i] = new Bottle(Math.random());
+  // this.bottles[i] = new Bottle(i);
 
   // constructor(number) {
   //   super();
@@ -38,5 +39,10 @@ class Bottle extends DrawableObject {
   //   getNumber(number) {
   //   if (number < 0.5) this.number = 1;
   //   else this.number = 2;
-  // }
+  //   }
+
+  //   getNumber(number) {
+  //   if (i % 2 == 0) this.number = 1;
+  //   if (i % 2 == 1) this.number = 2;
+  //   }
 }

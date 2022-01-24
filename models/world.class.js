@@ -4,7 +4,7 @@ class World {
   level = new Level();
   camera_x = 0;
   statusBarHealth = new StatusBarHealth();
-  // statusBarBottles = new StatusBarBottles();
+  statusBarBottles = new StatusBarBottles();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
   throwableobject = new ThrowableObject();
@@ -43,6 +43,12 @@ class World {
         this.statusBarHealth.setPercent(this.character.energy);
       }
     });
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+        this.statusBarBottles.setPercent(20);
+        this.level.bottles.splice(bottle, 1);
+      }
+    });
   }
 
   draw() {
@@ -58,7 +64,7 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
-    // this.addToMap(this.statusBarBottles);
+    this.addToMap(this.statusBarBottles);
     this.addToMap(this.startscreen);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
@@ -99,5 +105,4 @@ class World {
   //   mo.x = mo.x * -1;
   //   this.ctx.restore();
   // }
-
 }
