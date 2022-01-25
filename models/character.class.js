@@ -51,20 +51,20 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.png',
   ];
 
-  dead = {
-    dead: false,
-    deadListener: function (val) {},
-    set deadValue(val) {
-      this.dead = val;
-      this.deadListener(val);
-    },
-    get deadValue() {
-      return this.dead;
-    },
-    registerListener: function (listener) {
-      this.deadListener = listener;
-    },
-  };
+  // dead = {
+  //   dead: false,
+  //   deadListener: function (val) {},
+  //   set deadValue(val) {
+  //     this.dead = val;
+  //     this.deadListener(val);
+  //   },
+  //   get deadValue() {
+  //     return this.dead;
+  //   },
+  //   registerListener: function (listener) {
+  //     this.deadListener = listener;
+  //   },
+  // };
 
   constructor() {
     super();
@@ -78,9 +78,9 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
-    this.dead.registerListener(function (val) {
-      console.log(`character dead: ${val}`);
-    });
+    // this.dead.registerListener(function (val) {
+    //   console.log(`character dead: ${val}`);
+    // });
   }
 
   animate() {
@@ -101,8 +101,8 @@ class Character extends MovableObject {
       if (
         this.world.keyboard.SPACE &&
         !this.isAboveGround() &&
-        this.energy > 0 &&
-        this.jumpcounter == 0
+        this.energy > 0 //&&
+        // this.jumpcounter == 0
       ) {
         this.jump();
       }
@@ -153,7 +153,7 @@ class Character extends MovableObject {
     let interval1 = setInterval(() => {
       if (this.isDead()) {
         this.currentImage = 0;
-        this.dead.deadValue = true;
+        // this.dead.deadValue = true;
         timesRun++;
         if (timesRun == 1) clearInterval(interval1);
       }

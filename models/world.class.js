@@ -38,9 +38,19 @@ class World {
 
   checkCollisions() {
     this.level.chickens.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
+      if (
+        this.character.isColliding(enemy) &&
+        !this.character.isAboveGround()
+      ) {
         this.character.hit();
         this.statusBarHealth.setPercent(this.character.energy);
+      } else if (
+        this.character.isColliding(enemy) &&
+        this.character.isAboveGround() &&
+        !this.character.isHurt()
+      ) {
+        this.character.jump();
+        this.level.chickens.splice(enemy, 1);
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -86,7 +96,7 @@ class World {
       // console.log('first');
     }
     mo.draw(this.ctx);
-    // mo.drawFrame(this.ctx);
+    mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
       this.flipImage(mo);

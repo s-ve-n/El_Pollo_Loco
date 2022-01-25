@@ -25,3 +25,13 @@ window.addEventListener('keyup', (event) => {
   if (event.code == 'Space') keyboard.SPACE = false;
   if (event.code == 'KeyD') keyboard.D = false;
 });
+
+window.addEventListener('keypress', (event) => {
+  if (event.code == 'Space' || event.code == 'Enter') {
+    world.startscreen.removeStartscreen();
+  }
+});
+
+window.addEventListener('click', () => {
+  world.startscreen.removeStartscreen();
+});
