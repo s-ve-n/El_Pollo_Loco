@@ -126,6 +126,7 @@ class Character extends MovableObject {
       }
     }, 100);
 
+
     setInterval(() => {
       if (
         !this.isAboveGround() &&

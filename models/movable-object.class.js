@@ -2,7 +2,7 @@ class MovableObject extends DrawableObject {
   speed = 0.15;
   otherDirection = false;
   speedY = 0;
-  acceleration = 1;
+  acceleration = 0.50 ;
   energy = 100;
   lastHit = 0;
   jumpcounter = 0;
@@ -68,10 +68,11 @@ class MovableObject extends DrawableObject {
   }
 
   jump() {
-    this.speedY = 20;
+    this.speedY = 11;
+    this.currentImage = 0;
     this.jumpcounter = 1;
     setTimeout(() => {
       this.jumpcounter--;
-    }, 800);
+    }, 850);
   }
 }
