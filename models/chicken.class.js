@@ -31,7 +31,7 @@ class Chicken extends MovableObject {
 
       interval2 = setInterval(() => {
         this.playAnimation(this.IMAGES_WALKING);
-        console.log('interval2 running');
+        // console.log('interval2 running');
       }, 200);
     } else if (x == 0) {
       clearInterval(interval1);
