@@ -17,7 +17,7 @@ class World {
     this.throwableobject.world = this;
     this.draw();
     this.run();
-    // this.jumpCollision();
+    this.jumpCollision();
   }
 
   run() {
@@ -27,11 +27,11 @@ class World {
     }, 200);
   }
 
-  // jumpCollision() {
-  //   setInterval(() => {
-  //     this.checkCollisions();
-  //   }, 1000 / 100);
-  // }
+  jumpCollision() {
+    setInterval(() => {
+      this.checkJumpCollisions();
+    }, 1000 / 100);
+  }
 
   checkThrowObjects() {
     if (this.keyboard.D) {
@@ -51,14 +51,7 @@ class World {
       ) {
         this.character.hit();
         this.statusBarHealth.setPercent(this.character.energy);
-      } else if (
-        this.character.isColliding(enemy) &&
-        this.character.isAboveGround() &&
-        !this.character.isHurt()
-      ) {
-        this.character.jump();
-        this.level.chickens.splice(enemy, 1);
-      }
+      } else this.checkJumpCollisions();
     });
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
@@ -67,6 +60,23 @@ class World {
       }
     });
   }
+
+  checkJumpCollisions() {
+    this.level.chickens.forEach((enemy) => {
+    if (
+      this.character.isColliding(enemy) &&
+      this.character.isAboveGround() &&
+      !this.character.isHurt()
+    ) {
+      this.character.jump();
+      // this.level.chickens.splice(enemy, 1);
+      console.log(enemy);
+      enemy.speed = 0;
+      enemy.deadImage();
+    }
+  });
+  }
+
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

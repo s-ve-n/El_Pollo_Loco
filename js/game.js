@@ -27,7 +27,7 @@ window.addEventListener('keyup', (event) => {
 });
 
 window.addEventListener('keypress', (event) => {
-  if (event.code == 'Space' || event.code == 'Enter') {
+  if (event.code == 'Enter') {
     world.startscreen.removeStartscreen();
   }
 });
