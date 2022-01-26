@@ -32,6 +32,6 @@ window.addEventListener('keypress', (event) => {
   }
 });
 
-window.addEventListener('click', () => {
+document.getElementById('canvas').addEventListener('click', () => {
   world.startscreen.removeStartscreen();
 });
