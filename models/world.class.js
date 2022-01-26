@@ -17,6 +17,7 @@ class World {
     this.throwableobject.world = this;
     this.draw();
     this.run();
+    // this.jumpCollision();
   }
 
   run() {
@@ -25,6 +26,12 @@ class World {
       this.checkThrowObjects();
     }, 200);
   }
+
+  // jumpCollision() {
+  //   setInterval(() => {
+  //     this.checkCollisions();
+  //   }, 1000 / 100);
+  // }
 
   checkThrowObjects() {
     if (this.keyboard.D) {

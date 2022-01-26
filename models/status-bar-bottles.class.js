@@ -1,11 +1,11 @@
 class StatusBarBottles extends DrawableObject {
   IMAGES = [
-    'img/7.Marcadores/Barra/Marcador_botella/azul/0_.png',
-    'img/7.Marcadores/Barra/Marcador_botella/azul/20_.png',
-    'img/7.Marcadores/Barra/Marcador_botella/azul/40_.png',
-    'img/7.Marcadores/Barra/Marcador_botella/azul/60_.png',
-    'img/7.Marcadores/Barra/Marcador_botella/azul/80_.png',
-    'img/7.Marcadores/Barra/Marcador_botella/azul/100_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/0_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/20_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/40_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/60_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/80_.png',
+    'img/7.Marcadores/Barra/Marcador_botella/Azul/100_.png',
   ];
 
   x = 40;
