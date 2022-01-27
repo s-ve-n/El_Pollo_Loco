@@ -20,7 +20,9 @@ class MovableObject extends DrawableObject {
     if (this instanceof ThrowableObject) {
       return true;
     } else {
+      console.log('character.y = ' + this.y);
       return this.y < 160;
+      
     }
   }
 
