@@ -5,6 +5,9 @@ class Chicken extends MovableObject {
   width = 80;
   height = 60;
   speed = 0;
+  interval1;
+  interval2;
+  dead = false;
   IMAGES_WALKING = [
     'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png',
     'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png',
@@ -22,21 +25,18 @@ class Chicken extends MovableObject {
   }
 
   animate(x) {
-    let interval1;
-    let interval2;
     if (x == 1) {
-      interval1 = setInterval(() => {
+      this.interval1 = setInterval(() => {
         this.moveLeft();
       }, 10);
 
-      interval2 = setInterval(() => {
+      this.interval2 = setInterval(() => {
         this.playAnimation(this.IMAGES_WALKING);
-        // console.log('interval2 running');
       }, 200);
     } else if (x == 0) {
-      clearInterval(interval1);
-      clearInterval(interval2);
-      console.log('true');
+      clearInterval(this.interval1);
+      clearInterval(this.interval2);
+      this.dead = true;
     }
   }
 

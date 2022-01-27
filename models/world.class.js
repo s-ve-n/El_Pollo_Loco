@@ -18,6 +18,7 @@ class World {
     this.draw();
     this.run();
     this.jumpCollision();
+    this.bottleCollision();
   }
 
   run() {
@@ -30,6 +31,12 @@ class World {
   jumpCollision() {
     setInterval(() => {
       this.checkJumpCollisions();
+    }, 1000 / 100);
+  }
+
+  bottleCollision() {
+    setInterval(() => {
+      this.checkBottleCollisions();
     }, 1000 / 100);
   }
 
@@ -47,14 +54,18 @@ class World {
     this.level.chickens.forEach((enemy) => {
       if (
         this.character.isColliding(enemy) &&
-        !this.character.isAboveGround()
+        !this.character.isAboveGround() &&
+        !enemy.dead
       ) {
         this.character.hit();
         this.statusBarHealth.setPercent(this.character.energy);
       } else this.checkJumpCollisions();
     });
+  }
+
+  checkBottleCollisions() {
     this.level.bottles.forEach((bottle) => {
-      if (this.character.isColliding(bottle)) {
+    if (this.character.isColliding(bottle)) {
         this.statusBarBottles.setPercent(20);
         this.level.bottles.splice(bottle, 1);
       }
@@ -62,17 +73,18 @@ class World {
   }
 
   checkJumpCollisions() {
-    this.level.chickens.forEach((enemy) => {
+    this.level.chickens.forEach((chickenBrown) => {
     if (
-      this.character.isColliding(enemy) &&
+      this.character.isColliding(chickenBrown) &&
       this.character.isAboveGround() &&
-      !this.character.isHurt()
+      !this.character.isHurt() &&
+      !chickenBrown.dead
     ) {
       this.character.jump();
-      // this.level.chickens.splice(enemy, 1);
-      // console.log(enemy);
-      enemy.speed = 0;
-      enemy.deadImage();
+      chickenBrown.deadImage();
+      setTimeout(() => {
+        this.level.chickens.splice(chickenBrown, 1);
+      }, 1000);
     }
   });
   }
@@ -113,7 +125,7 @@ class World {
       // console.log('first');
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    // mo.drawFrame(this.ctx);
 
     if (mo.otherDirection) {
       this.flipImage(mo);
