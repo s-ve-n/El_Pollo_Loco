@@ -70,7 +70,7 @@ class World {
     ) {
       this.character.jump();
       // this.level.chickens.splice(enemy, 1);
-      console.log(enemy);
+      // console.log(enemy);
       enemy.speed = 0;
       enemy.deadImage();
     }

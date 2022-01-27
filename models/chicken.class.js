@@ -36,13 +36,12 @@ class Chicken extends MovableObject {
     } else if (x == 0) {
       clearInterval(interval1);
       clearInterval(interval2);
-      return 'true';
+      console.log('true');
     }
   }
 
   deadImage() {
     this.animate(0);
-    console.log(this.animate(0));
     this.loadImage(
       'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png'
     );
