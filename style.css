@@ -11,6 +11,14 @@ canvas {
   display: block;
 }
 
+#html-console {
+  position: absolute;
+  top: 150px;
+  left: 1;
+  font-size: 15px;
+  color: white;
+}
+
 .controls {
   margin-top: 50px;
   /* color: lightgrey; */

@@ -25,9 +25,10 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
+      document.getElementById('html-console').innerHTML = `character.y = ${this.character.y}`;
     }, 200);
   }
-
+ 
   jumpCollision() {
     setInterval(() => {
       this.checkJumpCollisions();
