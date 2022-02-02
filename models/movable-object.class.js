@@ -13,6 +13,9 @@ class MovableObject extends DrawableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
+      if (!this.isAboveGround() && this.speedY < 0) {
+        this.y = 180;
+      }
     }, 1000 / 60);
   }
 
@@ -21,8 +24,7 @@ class MovableObject extends DrawableObject {
       return true;
     } else {
       console.log('character.y = ' + this.y);
-      return this.y < 160;
-      
+      return this.y < 180;
     }
   }
 
