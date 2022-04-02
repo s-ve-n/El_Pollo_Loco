@@ -9,4 +9,5 @@
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
+  "gitpod.openInStable.neverPrompt": false
 }
