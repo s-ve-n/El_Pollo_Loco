@@ -51,21 +51,6 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.png',
   ];
 
-  // dead = {
-  //   dead: false,
-  //   deadListener: function (val) {},
-  //   set deadValue(val) {
-  //     this.dead = val;
-  //     this.deadListener(val);
-  //   },
-  //   get deadValue() {
-  //     return this.dead;
-  //   },
-  //   registerListener: function (listener) {
-  //     this.deadListener = listener;
-  //   },
-  // };
-
   constructor() {
     super();
     this.loadImage(
@@ -78,9 +63,6 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
-    // this.dead.registerListener(function (val) {
-    //   console.log(`character dead: ${val}`);
-    // });
   }
 
   animate() {
@@ -121,11 +103,16 @@ class Character extends MovableObject {
       if (this.isHurt() && this.energy > 0) {
         this.playAnimation(this.IMAGES_HURT);
       }
-      if (this.isAboveGround()) {
-        this.playAnimation(this.IMAGES_JUMPING);
-      }
+      // if (this.isAboveGround()) {
+      //   this.playAnimation(this.IMAGES_JUMPING);
+      // }
     }, 100);
 
+    if (this.isAboveGround()) {
+      setInterval(() => {
+        this.playAnimation(this.IMAGES_JUMPING);
+      }, 100);
+    }
 
     setInterval(() => {
       if (
@@ -139,16 +126,6 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    // let i = 0;
-    // let interval = setInterval(() => {
-    //   if (this.isDead()) {
-    //     this.img.src = this.IMAGES_DEAD[i];
-    //     i++;
-    //     if (i == this.IMAGES_DEAD.length) clearInterval(interval);
-    //   }
-    // }, 500);
-
-    // 60 mal pro Sekunde prüfen, ob isDead() true liefert und dann this.currentImage auf 0 setzen, aber nur einmal und dann sofort das Intervall beenden:
     let timesRun = 0;
     let interval1 = setInterval(() => {
       if (this.isDead()) {
@@ -159,7 +136,6 @@ class Character extends MovableObject {
       }
     }, 1000 / 60);
 
-    // this.playAnimation(this.IMAGES_DEAD) starten, wenn isDead() true liefert und dann alle 200ms einmal this.playAnimation(this.IMAGES_DEAD) ausführen bis timesRun2 == 6 liefert, da IMAGES_DEAD 6 Bilder hat, und dann das Intervall beenden:
     let timesRun2 = 0;
     let interval2 = setInterval(() => {
       if (this.isDead()) {
