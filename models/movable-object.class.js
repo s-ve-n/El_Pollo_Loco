@@ -73,9 +73,8 @@ class MovableObject extends DrawableObject {
 
   jump() {
     this.speedY = 11;
-    // this.jumpcounter = 1;
-    // setTimeout(() => {
-    //   this.jumpcounter--;
-    // }, 850);
+    if(!this.isAboveGround()){
+      this.currentImage = 0;
+    }
   }
 }
