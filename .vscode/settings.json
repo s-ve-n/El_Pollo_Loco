@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Gitpod Dark",
+  "workbench.colorTheme": "Cobalt2",
   "editor.minimap.enabled": false,
   "redhat.telemetry.enabled": false,
   "workbench.startupEditor": "none",
@@ -9,5 +9,6 @@
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
-  "gitpod.openInStable.neverPrompt": true
+  "gitpod.openInStable.neverPrompt": true,
+  "liveServer.settings.port": 5501
 }

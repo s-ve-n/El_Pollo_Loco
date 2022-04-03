@@ -50,6 +50,7 @@ class Character extends MovableObject {
     'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-9.png',
     'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE/I-10.png',
   ];
+  trigger = false;
 
   constructor() {
     super();
@@ -103,16 +104,29 @@ class Character extends MovableObject {
       if (this.isHurt() && this.energy > 0) {
         this.playAnimation(this.IMAGES_HURT);
       }
-      // if (this.isAboveGround()) {
-      //   this.playAnimation(this.IMAGES_JUMPING);
-      // }
+      if (this.isAboveGround()) {
+        this.playAnimation(this.IMAGES_JUMPING);
+      }
     }, 100);
 
-    if (this.isAboveGround()) {
-      setInterval(() => {
-        this.playAnimation(this.IMAGES_JUMPING);
-      }, 100);
-    }
+    // if (this.isAboveGround()) {
+    //   setInterval(() => {
+    //     this.playAnimation(this.IMAGES_JUMPING);
+    //   }, 100);
+    // }
+
+    //   setInterval(() => {
+    //     if (this.isAboveGround()) this.trigger = true; console.log(this.trigger);
+    //     if (!this.isAboveGround()) this.trigger = false; console.log(this.trigger);
+    //   }, 1000 / 100);
+
+    //   setInterval(() => {
+    //   if (this.trigger) {
+    //     setInterval(() => {
+    //       this.playAnimation(this.IMAGES_JUMPING);
+    //     }, 100);
+    //   }
+    // }, 1000 / 100);
 
     setInterval(() => {
       if (
@@ -130,7 +144,6 @@ class Character extends MovableObject {
     let interval1 = setInterval(() => {
       if (this.isDead()) {
         this.currentImage = 0;
-        // this.dead.deadValue = true;
         timesRun++;
         if (timesRun == 1) clearInterval(interval1);
       }
@@ -144,5 +157,13 @@ class Character extends MovableObject {
         if (timesRun2 == 6) clearInterval(interval2);
       }
     }, 200);
+
+    setInterval(() => {
+      if (!this.isAboveGround()) this.currentImage = 0;
+    }, 1000 / 60);
+
+    setInterval(() => {
+      console.log(this.currentImage);
+    }, 1000 / 60);
   }
 }

@@ -23,7 +23,7 @@ class MovableObject extends DrawableObject {
     if (this instanceof ThrowableObject) {
       return true;
     } else {
-      console.log('character.y = ' + this.y);
+      // console.log('character.y = ' + this.y);
       return this.y < 180;
     }
   }
@@ -73,8 +73,11 @@ class MovableObject extends DrawableObject {
 
   jump() {
     this.speedY = 11;
-    if(!this.isAboveGround()){
-      this.currentImage = 0;
-    }
+    // if (this.isAboveGround()) {
+    //   this.currentImage = 0;
+    // }
+    // if (!this.isAboveGround()) {
+    //   this.currentImage = 0;
+    // }
   }
 }

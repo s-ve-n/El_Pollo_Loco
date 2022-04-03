@@ -28,7 +28,7 @@ class World {
       // document.getElementById('html-console').innerHTML = `character.y = ${this.character.y}`;
     }, 200);
   }
- 
+
   jumpCollision() {
     setInterval(() => {
       this.checkJumpCollisions();
@@ -66,7 +66,7 @@ class World {
 
   checkBottleCollisions() {
     this.level.bottles.forEach((bottle) => {
-    if (this.character.isColliding(bottle)) {
+      if (this.character.isColliding(bottle)) {
         this.statusBarBottles.setPercent(20);
         this.level.bottles.splice(bottle, 1);
       }
@@ -75,21 +75,21 @@ class World {
 
   checkJumpCollisions() {
     this.level.chickens.forEach((chickenBrown) => {
-    if (
-      this.character.isColliding(chickenBrown) &&
-      this.character.isAboveGround() &&
-      !this.character.isHurt() &&
-      !chickenBrown.dead
-    ) {
-      this.character.jump();
-      chickenBrown.deadImage();
-      setTimeout(() => {
-        this.level.chickens.splice(chickenBrown, 1);
-      }, 1000);
-    }
-  });
+      if (
+        this.character.isColliding(chickenBrown) &&
+        this.character.isAboveGround() &&
+        !this.character.isHurt() &&
+        !chickenBrown.dead
+      ) {
+        this.character.currentImage = 0;
+        this.character.jump();
+        chickenBrown.deadImage();
+        setTimeout(() => {
+          this.level.chickens.splice(chickenBrown, 1);
+        }, 1000);
+      }
+    });
   }
-
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
