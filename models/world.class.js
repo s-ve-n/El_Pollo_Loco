@@ -81,7 +81,7 @@ class World {
         !this.character.isHurt() &&
         !chickenBrown.dead
       ) {
-        this.character.currentImage = 0;
+        // this.character.currentImage = 0;
         this.character.jump();
         chickenBrown.deadImage();
         setTimeout(() => {

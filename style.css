@@ -10,7 +10,7 @@ body {
 }
 
 canvas {
-  margin-top: 200px;
+  margin-top: 50px;
   background-color: black;
   display: block;
 }

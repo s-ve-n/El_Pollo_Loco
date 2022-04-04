@@ -158,12 +158,12 @@ class Character extends MovableObject {
       }
     }, 200);
 
-    setInterval(() => {
-      if (!this.isAboveGround()) this.currentImage = 0;
-    }, 1000 / 60);
+    // setInterval(() => {
+    //   if (!this.isAboveGround()) this.currentImage = 0;
+    // }, 1000 / 60);
 
-    setInterval(() => {
-      console.log(this.currentImage);
-    }, 1000 / 60);
+    // setInterval(() => {
+    //   console.log(this.currentImage);
+    // }, 1000 / 60);
   }
 }
