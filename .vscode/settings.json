@@ -10,5 +10,4 @@
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
   "gitpod.openInStable.neverPrompt": true,
-  "liveServer.settings.port": 5501
 }
