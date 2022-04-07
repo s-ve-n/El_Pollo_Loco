@@ -52,7 +52,17 @@ class World {
   }
 
   checkCollisions() {
-    this.level.chickens.forEach((enemy) => {
+    this.level.chickensBig.forEach((enemy) => {
+      if (
+        this.character.isColliding(enemy) &&
+        !this.character.isAboveGround() &&
+        !enemy.dead
+      ) {
+        this.character.hit();
+        this.statusBarHealth.setPercent(this.character.energy);
+      } else this.checkJumpCollisions();
+    });
+    this.level.chickensSmall.forEach((enemy) => {
       if (
         this.character.isColliding(enemy) &&
         !this.character.isAboveGround() &&
@@ -74,18 +84,47 @@ class World {
   }
 
   checkJumpCollisions() {
-    this.level.chickens.forEach((chickenBrown) => {
+    this.level.chickensBig.forEach((enemy) => {
       if (
-        this.character.isColliding(chickenBrown) &&
+        this.character.isColliding(enemy) &&
         this.character.isAboveGround() &&
         !this.character.isHurt() &&
-        !chickenBrown.dead
+        !enemy.dead
       ) {
-        // this.character.currentImage = 0;
         this.character.jump();
-        chickenBrown.deadImage();
+        enemy.deadImage();
+        // setTimeout(() => {
+        //   this.level.chickensSmall.splice(enemy, 1);
+        // }, 1000); // not working because: https://stackoverflow.com/questions/21811630/splicing-a-javascript-array-from-within-the-callback-passed-to-foreach
+        enemy.dead = true;
         setTimeout(() => {
-          this.level.chickens.splice(chickenBrown, 1);
+          this.level.chickensBig.slice(0).forEach((item) => {
+            if (item.dead) {
+              this.level.chickensBig.splice(item, 1);
+            }
+          });
+        }, 1000);
+      }
+    });
+    this.level.chickensSmall.forEach((enemy) => {
+      if (
+        this.character.isColliding(enemy) &&
+        this.character.isAboveGround() &&
+        !this.character.isHurt() &&
+        !enemy.dead
+      ) {
+        this.character.jump();
+        enemy.deadImage();
+        // setTimeout(() => {
+        //   this.level.chickensSmall.splice(enemy, 1);
+        // }, 1000); // not working because: https://stackoverflow.com/questions/21811630/splicing-a-javascript-array-from-within-the-callback-passed-to-foreach
+        enemy.dead = true;
+        setTimeout(() => {
+          this.level.chickensSmall.slice(0).forEach((item) => {
+          if (item.dead) {
+              this.level.chickensSmall.splice(item, 1);
+            }
+          });
         }, 1000);
       }
     });
@@ -98,7 +137,8 @@ class World {
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.level.endboss);
     this.addObjectsToMap(this.level.clouds);
-    this.addObjectsToMap(this.level.chickens);
+    this.addObjectsToMap(this.level.chickensBig);
+    this.addObjectsToMap(this.level.chickensSmall);
     this.addObjectsToMap(this.level.bottles);
     this.addToMap(this.character);
     this.addObjectsToMap(this.throwableObjects);

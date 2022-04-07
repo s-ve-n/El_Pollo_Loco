@@ -12,11 +12,17 @@ class Startscreen extends DrawableObject {
   removeStartscreen() {
     this.width = 0;
     this.height = 0;
-    this.chickenSpeed();
+    this.chickenBigSpeed();
+    this.chickenSmallSpeed();
   }
 
-  chickenSpeed() {
-    for (let i = 0; i < this.world.level.chickens.length; i++)
-      this.world.level.chickens[i].speed = 0.5 + Math.random() * 0.5;
+  chickenBigSpeed() {
+    for (let i = 0; i < this.world.level.chickensBig.length; i++)
+      this.world.level.chickensBig[i].speed = 0.5 + Math.random() * 0.5;
+  }
+
+  chickenSmallSpeed() {
+    for (let i = 0; i < this.world.level.chickensSmall.length; i++)
+      this.world.level.chickensSmall[i].speed = 0.5 + Math.random() * 0.5;
   }
 }
