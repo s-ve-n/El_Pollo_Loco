@@ -8,7 +8,7 @@ class Level {
 
   constructor() {
     this.addClouds();
-    this.addChickens();
+    this.addChickensBig();
     this.addBackgroundObjects();
     this.addBottles();
   }
@@ -19,9 +19,9 @@ class Level {
     }
   }
 
-  addChickens() {
+  addChickensBig() {
     for (let i = 0; i < 5; i++) {
-      this.chickens[i] = new Chicken();
+      this.chickens[i] = new ChickenBig();
     }
   }
 

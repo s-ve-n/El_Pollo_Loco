@@ -1,6 +1,6 @@
-class Chicken extends MovableObject {
+class ChickenBig extends MovableObject {
   static lastx = 500;
-  x = Chicken.lastx + Math.random() * 500;
+  x = ChickenBig.lastx + Math.random() * 500;
   y = 360;
   width = 80;
   height = 60;
@@ -21,7 +21,7 @@ class Chicken extends MovableObject {
     );
     this.loadImages(this.IMAGES_WALKING);
     this.animate(1);
-    Chicken.lastx = this.x;
+    ChickenBig.lastx = this.x;
   }
 
   animate(x) {
