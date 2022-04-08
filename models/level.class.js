@@ -22,13 +22,13 @@ class Level {
   }
 
   addChickensBig() {
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 0; i++) {
       this.chickensBig[i] = new ChickenBig();
     }
   }
 
   addChickensSmall() {
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 0; i++) {
       this.chickensSmall[i] = new ChickenSmall();
     }
   }

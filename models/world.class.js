@@ -19,6 +19,7 @@ class World {
     this.run();
     this.jumpCollision();
     this.bottleCollision();
+    this.drawBottleAmount();
   }
 
   run() {
@@ -138,6 +139,12 @@ class World {
     requestAnimationFrame(() => {
       this.draw();
     });
+  }
+
+  drawBottleAmount() {
+    this.ctx.font = '30px Arial';
+    this.ctx.fillStyle = 'black';
+    this.ctx.fillText('10', 35, 70);
   }
 
   addObjectsToMap(objects) {

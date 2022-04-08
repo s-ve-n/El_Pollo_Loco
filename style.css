@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
 
 body {
   font-family: 'Bangers', cursive;
+  /* font-family: 'Boogaloo', cursive; */
   font-size: 20px;
+  letter-spacing: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
