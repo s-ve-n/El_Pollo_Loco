@@ -94,16 +94,9 @@ class World {
         this.character.jump();
         enemy.deadImage();
         setTimeout(() => {
-          this.level.chickensBig.splice(enemy, 1);
-        }, 1000); // not working because: https://stackoverflow.com/questions/21811630/splicing-a-javascript-array-from-within-the-callback-passed-to-foreach
-        // enemy.dead = true;
-        // setTimeout(() => {
-        //   this.level.chickensBig.slice(0).forEach((item) => {
-        //     if (item.dead) {
-        //       this.level.chickensBig.splice(item, 1);
-        //     }
-        //   });
-        // }, 1000);
+          let pos = this.level.chickensBig.indexOf(enemy);
+          this.level.chickensBig.splice(pos, 1);
+        }, 1000);
       }
     });
     this.level.chickensSmall.forEach((enemy) => {
@@ -116,16 +109,9 @@ class World {
         this.character.jump();
         enemy.deadImage();
         setTimeout(() => {
-          this.level.chickensSmall.splice(enemy, 1);
-        }, 1000); // not working because: https://stackoverflow.com/questions/21811630/splicing-a-javascript-array-from-within-the-callback-passed-to-foreach
-      //   enemy.dead = true;
-      //   setTimeout(() => {
-      //     this.level.chickensSmall.slice(0).forEach((item) => {
-      //     if (item.dead) {
-      //         this.level.chickensSmall.splice(item, 1);
-      //       }
-      //     });
-      //   }, 1000);
+          let pos = this.level.chickensSmall.indexOf(enemy);
+          this.level.chickensSmall.splice(pos, 1);
+        }, 1000);
       }
     });
   }
