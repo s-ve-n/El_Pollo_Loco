@@ -19,7 +19,6 @@ class World {
     this.run();
     this.jumpCollision();
     this.bottleCollision();
-    this.drawBottleAmount();
   }
 
   run() {
@@ -119,7 +118,6 @@ class World {
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
     this.ctx.translate(this.camera_x, 0); // move the camera
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.level.endboss);
@@ -132,18 +130,20 @@ class World {
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.statusBarBottles);
+    this.drawBottleCounter();
     this.addToMap(this.startscreen);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
-
     requestAnimationFrame(() => {
       this.draw();
     });
   }
 
-  drawBottleAmount() {
-    this.ctx.font = '30px Arial';
-    this.ctx.fillText('Hello World', 35, 70);
+  drawBottleCounter() {
+    this.ctx.font = '50px Boogaloo';
+    this.ctx.fillStyle = 'white';
+    this.ctx.textAlign = 'center';
+    this.ctx.fillText('10', 100, 107);
   }
 
   addObjectsToMap(objects) {
