@@ -6,6 +6,7 @@ class BottleCounter extends DrawableObject {
 
   constructor() {
     super();
-    this.img = 'img/7.Marcadores/Icono/Botella.png';
+    this.img = "img/7.Marcadores/Icono/Botella.png";
+    this.loadImage(this.img);
   }
 }
