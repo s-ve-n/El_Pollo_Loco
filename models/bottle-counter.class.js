@@ -1,4 +1,4 @@
-class StatusBarBottles extends DrawableObject {
+class BottleCounter extends DrawableObject {
   IMAGES = [
     'img/7.Marcadores/Icono/Botella.png',
   ];

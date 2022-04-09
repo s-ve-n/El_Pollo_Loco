@@ -1,6 +1,7 @@
 let canvas;
 let keyboard;
 let world;
+let gameStarted = false;
 
 function init() {
   canvas = document.getElementById('canvas');
@@ -27,17 +28,21 @@ window.addEventListener('keyup', (event) => {
 });
 
 window.addEventListener('keypress', (event) => {
-  if (event.code == 'Enter') {
+  if (event.code == 'Enter' && !gameStarted) {
     let container = document.getElementById('container');
     let img = document.getElementById('image');
     container.removeChild(img);
     world.startscreen.removeStartscreen();
+    gameStarted = true;
   }
 });
 
 document.getElementById('container').addEventListener('click', () => {
+  if (!gameStarted) {
   let container = document.getElementById('container');
   let img = document.getElementById('image');
   container.removeChild(img);
   world.startscreen.removeStartscreen();
+  gameStarted = true;
+  }
 });

@@ -4,7 +4,7 @@ class World {
   level = new Level();
   camera_x = 0;
   statusBarHealth = new StatusBarHealth();
-  statusBarBottles = new StatusBarBottles();
+  bottleCounter = new BottleCounter();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
   throwableobject = new ThrowableObject();
@@ -15,10 +15,11 @@ class World {
     this.character.world = this;
     this.startscreen.world = this;
     this.throwableobject.world = this;
+    this.bottleCounter.world = this;
     this.draw();
     this.run();
     this.jumpCollision();
-    this.bottleCollision();
+    // this.bottleCollision();
   }
 
   run() {
@@ -35,11 +36,11 @@ class World {
     }, 1000 / 100);
   }
 
-  bottleCollision() {
-    setInterval(() => {
-      this.checkBottleCollisions();
-    }, 1000 / 100);
-  }
+  // bottleCollision() {
+  //   setInterval(() => {
+  //     this.checkBottleCollisions();
+  //   }, 1000 / 100);
+  // }
 
   checkThrowObjects() {
     if (this.keyboard.D) {
@@ -74,14 +75,14 @@ class World {
     });
   }
 
-  checkBottleCollisions() {
-    this.level.bottles.forEach((bottle) => {
-      if (this.character.isColliding(bottle)) {
-        this.statusBarBottles.setPercent(20);
-        this.level.bottles.splice(bottle, 1);
-      }
-    });
-  }
+  // checkBottleCollisions() {
+  //   this.level.bottles.forEach((bottle) => {
+  //     if (this.character.isColliding(bottle)) {
+  //       this.statusBarBottles.setPercent(20);
+  //       this.level.bottles.splice(bottle, 1);
+  //     }
+  //   });
+  // }
 
   checkJumpCollisions() {
     this.level.chickensBig.forEach((enemy) => {
@@ -129,7 +130,7 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
-    this.addToMap(this.statusBarBottles);
+    this.addToMap(this.bottleCounter);
     this.drawBottleCounter();
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
