@@ -26,19 +26,18 @@ window.addEventListener('keyup', (event) => {
   if (event.code == 'KeyD') keyboard.D = false;
 });
 
-// window.addEventListener('keypress', (event) => {
-//   if (event.code == 'Enter') {
-//     world.startscreen.removeStartscreen();
-//   }
-// });
-
 window.addEventListener('keypress', (event) => {
   if (event.code == 'Enter') {
-    document.getElementById('startscreen').outerHTML = `
-    <canvas id="canvas" width="720" height="480"></canvas>
-    `;  }
+    let container = document.getElementById('container');
+    let img = document.getElementById('image');
+    container.removeChild(img);
+    world.startscreen.removeStartscreen();
+  }
 });
 
-// document.getElementById('canvas').addEventListener('click', () => {
-//   world.startscreen.removeStartscreen();
-// });
+document.getElementById('container').addEventListener('click', () => {
+  let container = document.getElementById('container');
+  let img = document.getElementById('image');
+  container.removeChild(img);
+  world.startscreen.removeStartscreen();
+});

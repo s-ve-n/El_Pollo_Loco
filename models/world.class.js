@@ -131,7 +131,6 @@ class World {
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.statusBarBottles);
     this.drawBottleCounter();
-    // this.addToMap(this.startscreen);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
     requestAnimationFrame(() => {
