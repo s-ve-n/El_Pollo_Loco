@@ -34,7 +34,7 @@ class Level {
   }
 
   addBottles() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 0; i++) {
       this.bottles[i] = new Bottle();
     }
   }

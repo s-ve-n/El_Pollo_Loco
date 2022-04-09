@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
 
 body {
-  font-family: 'Bangers', cursive;
-  /* font-family: 'Boogaloo', cursive; */
+  font-family: 'Bangers';
   font-size: 20px;
   letter-spacing: 1.5px;
   display: flex;
@@ -24,6 +23,12 @@ canvas {
   left: 1;
   font-size: 15px;
   color: white;
+}
+
+.startscreen {
+  margin-top: 50px;
+  width: 720px;
+  height: 480px;
 }
 
 .start {
