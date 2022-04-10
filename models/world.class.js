@@ -9,6 +9,7 @@ class World {
   ctx = canvas.getContext('2d');
   throwableobject = new ThrowableObject();
   qty = 0;
+  throwTimeout = false;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -26,9 +27,12 @@ class World {
   run() {
     setInterval(() => {
       this.checkCollisions();
-      this.checkThrowObjects();
       // document.getElementById('html-console').innerHTML = `character.y = ${this.character.y}`;
     }, 200);
+
+    setInterval(() => {
+      this.checkThrowObjects();
+    }, 1000 / 100);
   }
 
   jumpCollision() {
@@ -44,12 +48,16 @@ class World {
   }
 
   checkThrowObjects() {
-    if (this.keyboard.D) {
+    if (this.keyboard.D && !this.throwTimeout) {
+      this.throwTimeout = true;
       let bottle = new ThrowableObject(
-        this.character.x + 100,
+        this.character.x + 50,
         this.character.y + 100
       );
       this.throwableObjects.push(bottle);
+      setTimeout(() => {
+        this.throwTimeout = false;
+      }, 1000);
     }
   }
 
