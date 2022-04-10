@@ -7,7 +7,6 @@ class World {
   bottleCounter = new BottleCounter();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
-  throwableobject = new ThrowableObject();
   qty = 0;
   throwTimeout = false;
 
@@ -16,7 +15,6 @@ class World {
     this.keyboard = keyboard;
     this.character.world = this;
     this.startscreen.world = this;
-    this.throwableobject.world = this;
     this.bottleCounter.world = this;
     this.draw();
     this.run();
@@ -51,13 +49,14 @@ class World {
     if (this.keyboard.D && !this.throwTimeout) {
       this.throwTimeout = true;
       let bottle = new ThrowableObject(
+        this,
         this.character.x + 50,
-        this.character.y + 100
+        this.character.y + 100,
       );
       this.throwableObjects.push(bottle);
       setTimeout(() => {
         this.throwTimeout = false;
-      }, 1000);
+      }, 750);
     }
   }
 
