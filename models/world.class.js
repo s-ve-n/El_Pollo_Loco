@@ -8,6 +8,7 @@ class World {
   throwableObjects = [];
   ctx = canvas.getContext('2d');
   throwableobject = new ThrowableObject();
+  qty = 0;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -19,7 +20,7 @@ class World {
     this.draw();
     this.run();
     this.jumpCollision();
-    // this.bottleCollision();
+    this.bottleCollision();
   }
 
   run() {
@@ -36,11 +37,11 @@ class World {
     }, 1000 / 100);
   }
 
-  // bottleCollision() {
-  //   setInterval(() => {
-  //     this.checkBottleCollisions();
-  //   }, 1000 / 100);
-  // }
+  bottleCollision() {
+    setInterval(() => {
+      this.checkBottleCollisions();
+    }, 1000 / 100);
+  }
 
   checkThrowObjects() {
     if (this.keyboard.D) {
@@ -74,15 +75,6 @@ class World {
       } else this.checkJumpCollisions();
     });
   }
-
-  // checkBottleCollisions() {
-  //   this.level.bottles.forEach((bottle) => {
-  //     if (this.character.isColliding(bottle)) {
-  //       this.statusBarBottles.setPercent(20);
-  //       this.level.bottles.splice(bottle, 1);
-  //     }
-  //   });
-  // }
 
   checkJumpCollisions() {
     this.level.chickensBig.forEach((enemy) => {
@@ -131,7 +123,7 @@ class World {
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
     this.addToMap(this.bottleCounter);
-    this.drawBottleCounter();
+    this.drawBottleCounter(this.qty);
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
     requestAnimationFrame(() => {
@@ -139,11 +131,20 @@ class World {
     });
   }
 
-  drawBottleCounter() {
+  checkBottleCollisions() {
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+        this.qty++;
+        this.drawBottleCounter(this.qty);
+        this.level.bottles.splice(bottle, 1);
+      }
+    });
+  }
+
+  drawBottleCounter(qty) {
     this.ctx.font = '50px Boogaloo';
     this.ctx.fillStyle = 'white';
-    this.ctx.textAlign = 'center';
-    this.ctx.fillText('10', 100, 107);
+    this.ctx.fillText(`${qty}`, 75, 107);
   }
 
   addObjectsToMap(objects) {
