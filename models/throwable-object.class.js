@@ -25,11 +25,11 @@ class ThrowableObject extends MovableObject {
     if (!this.world.character.otherDirection) {
       if (!this.world.character.moving) {
         clearInterval(interval2);
-        this.interval1;
+        interval1;
       }
       if (this.world.character.moving) {
         clearInterval(interval1);
-        this.interval2;
+        interval2;
       }
     }
     if (this.world.character.otherDirection) {
