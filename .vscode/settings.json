@@ -10,4 +10,5 @@
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
   "gitpod.openInStable.neverPrompt": true,
+  "scm.countBadge": "off",
 }
