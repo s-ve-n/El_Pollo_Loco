@@ -4,7 +4,7 @@ class ThrowableObject extends MovableObject {
 
   constructor(world, x, y) {
     super();
-    this.loadImage('img/7.Marcadores/Icono/Botella.png');
+    this.loadImage("img/7.Marcadores/Icono/Botella.png");
     this.x = x;
     this.y = y;
     this.world = world;
@@ -12,25 +12,27 @@ class ThrowableObject extends MovableObject {
   }
 
   throw() {
+    let interval1 = setInterval(() => {
+      this.x += 5;
+      console.log("1");
+    }, 1000 / 100);
+    let interval2 = setInterval(() => {
+      this.x += 8.5;
+      console.log("2");
+    }, 1000 / 100);
     this.speedY = 10;
     this.applyGravity();
-    let intervall1;
-    let intervall2;
     if (!this.world.character.otherDirection) {
       if (!this.world.character.moving) {
-        clearInterval(intervall2);
-        intervall1 = setInterval(() => {
-          this.x += 5;
-          console.log('1');
-        }, 1000 / 100);
-      } if (this.world.character.moving) {
-        clearInterval(intervall1);
-        intervall2 = setInterval(() => {
-          this.x += 8.5;
-          console.log('2');
-        }, 1000 / 100);
+        clearInterval(interval2);
+        this.interval1;
       }
-    } else {
+      if (this.world.character.moving) {
+        clearInterval(interval1);
+        this.interval2;
+      }
+    }
+    if (this.world.character.otherDirection) {
       setInterval(() => {
         this.x -= 5;
       }, 1000 / 100);
