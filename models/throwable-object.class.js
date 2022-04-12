@@ -18,30 +18,32 @@ class ThrowableObject extends MovableObject {
 
     if (!this.world.character.otherDirection) {
       if (!this.world.character.moving) {
-        clearInterval(this.world.intervalArray[this.world.pos2]);
+        for (let index = 0; index < this.world.intervalArray.length; index++) {
+          clearInterval(this.world.intervalArray[index]);
+        }
         this.world.interval1 = setInterval(() => {
           this.x += 5;
-          // console.log("1");
+          console.log("1");
         }, 1000 / 100);
         this.world.intervalArray.push(this.world.interval1);
-        this.world.pos1 = this.world.intervalArray.indexOf(
-          this.world.interval1
-        );
+        // this.world.pos1 = this.world.intervalArray.indexOf(
+        //   this.world.interval1
+        // );
         console.log(this.world.intervalArray);
-        console.log(this.world.pos1);
       }
       if (this.world.character.moving) {
-        clearInterval(this.world.intervalArray[this.world.pos1]);
+        for (let index = 0; index < this.world.intervalArray.length; index++) {
+          clearInterval(this.world.intervalArray[index]);
+        }
         this.world.interval2 = setInterval(() => {
-          this.x += 8.5;
-          // console.log("2");
+          this.x += 10;
+          console.log("2");
         }, 1000 / 100);
         this.world.intervalArray.push(this.world.interval2);
-        this.world.pos2 = this.world.intervalArray.indexOf(
-          this.world.interval2
-        );
+        // this.world.pos2 = this.world.intervalArray.indexOf(
+        //   this.world.interval2
+        // );
         console.log(this.world.intervalArray);
-        console.log(this.world.pos2);
       }
     }
 
