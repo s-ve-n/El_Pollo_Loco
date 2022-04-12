@@ -13,9 +13,8 @@ class World {
   interval1;
   interval2;
   interval3;
+  interval4;
   intervalArray = [];
-  pos1;
-  pos2;
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -63,7 +62,7 @@ class World {
       this.throwableObjects.push(this.bottle);
       setTimeout(() => {
         this.throwTimeout = false;
-      }, 750);
+      }, 1000);
     }
   }
 
