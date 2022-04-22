@@ -53,7 +53,6 @@ class World {
     if (this.keyboard.D && !this.throwTimeout) {
       this.throwTimeout = true;
       this.bottle = new ThrowableObject(
-        this,
         this.character.x + 50,
         this.character.y + 100
       );

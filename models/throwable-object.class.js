@@ -9,13 +9,12 @@ class ThrowableObject extends MovableObject {
     'img/6.botella/Rotación/Mesa de trabajo 1 copia 6.png',
   ];
 
-  constructor(world, x, y) {
+  constructor(x, y) {
     super();
     this.loadImage('img/7.Marcadores/Icono/Botella.png');
     this.loadImages(this.IMAGES_ROTATION);
     this.x = x;
     this.y = y;
-    // this.world = world;
     this.throw();
     this.applyGravity();
   }
