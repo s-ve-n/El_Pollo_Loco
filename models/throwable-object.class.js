@@ -34,7 +34,6 @@ class ThrowableObject extends MovableObject {
     setInterval(() => {
       this.playAnimation(this.IMAGES_ROTATION);
     }, 125);
-    console.log(world);
 
     // let pos = this.world.throwableObjects.indexOf(this.world.bottle);
 

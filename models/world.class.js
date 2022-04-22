@@ -19,9 +19,7 @@ class World {
   constructor(canvas, keyboard) {
     this.canvas = canvas;
     this.keyboard = keyboard;
-    this.character.world = this;
-    this.startscreen.world = this;
-    this.bottleCounter.world = this;
+    // this.character.world = this;
     this.draw();
     this.run();
     this.jumpCollision();
