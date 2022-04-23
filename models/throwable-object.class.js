@@ -2,6 +2,7 @@ class ThrowableObject extends MovableObject {
   width = 70;
   height = 60;
   speedY = 10;
+  touchdown = false;
   IMAGES_ROTATION = [
     'img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png',
     'img/6.botella/Rotación/Mesa de trabajo 1 copia 4.png',
@@ -26,6 +27,24 @@ class ThrowableObject extends MovableObject {
     this.y = y;
     this.throw();
     this.applyGravity();
+    this.checkY();
+  }
+
+  checkY() {
+    this.checkYInterval = setInterval(() => {
+      console.log(this.y);
+      if (this.y >= 392.5) {
+        this.y = 392.5;
+        this.speed = 0;
+        this.acceleration = 0;
+        this.speedY = 0;
+        clearInterval(this.rotationInterval);
+        this.splashInterval = setInterval(() => {
+          this.playAnimation(this.IMAGES_SPLASH);
+        }, 175);
+        clearInterval(this.checkYInterval);
+      }
+    }, 10);
   }
 
   throw() {
@@ -38,19 +57,10 @@ class ThrowableObject extends MovableObject {
     this.rotationInterval = setInterval(() => {
       this.playAnimation(this.IMAGES_ROTATION);
     }, 125);
-      this.splashInterval = setInterval(() => {
-        if (this.y > 300) {
-        this.speed = 0;
-        this.acceleration = 0;
-        this.speedY = 0;
-        clearInterval(this.rotationInterval);
-        this.playAnimation(this.IMAGES_SPLASH);
-        }
-      }, 175);
-      setTimeout(() => {
-        console.log('splash');
-        clearInterval(this.splashInterval);
-      }, 1300);
+    setTimeout(() => {
+      console.log('splash');
+      clearInterval(this.splashInterval);
+    }, 1300);
 
     // let pos = this.world.throwableObjects.indexOf(this.world.bottle);
 
