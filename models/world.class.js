@@ -6,15 +6,9 @@ class World {
   statusBarHealth = new StatusBarHealth();
   bottleCounter = new BottleCounter();
   throwableObjects = [];
-  ctx = canvas.getContext("2d");
+  ctx = canvas.getContext('2d');
   qty = 0;
   throwTimeout = false;
-  bottle;
-  interval1;
-  interval2;
-  interval3;
-  interval4;
-  intervalArray = [];
 
   constructor(canvas, keyboard) {
     this.canvas = canvas;
@@ -22,8 +16,6 @@ class World {
     // this.character.world = this;
     this.draw();
     this.run();
-    this.jumpCollision();
-    this.bottleCollision();
   }
 
   run() {
@@ -34,17 +26,7 @@ class World {
 
     setInterval(() => {
       this.checkThrowObjects();
-    }, 1000 / 100);
-  }
-
-  jumpCollision() {
-    setInterval(() => {
       this.checkJumpCollisions();
-    }, 1000 / 100);
-  }
-
-  bottleCollision() {
-    setInterval(() => {
       this.checkBottleCollisions();
     }, 1000 / 100);
   }
@@ -152,8 +134,8 @@ class World {
   }
 
   drawBottleCounter(qty) {
-    this.ctx.font = "50px Boogaloo";
-    this.ctx.fillStyle = "white";
+    this.ctx.font = '50px Boogaloo';
+    this.ctx.fillStyle = 'white';
     this.ctx.fillText(`${qty}`, 75, 107);
   }
 

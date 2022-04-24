@@ -27,29 +27,12 @@ class ThrowableObject extends MovableObject {
     this.y = y;
     this.throw();
     this.applyGravity();
-    this.checkY();
-  }
-
-  checkY() {
-    this.checkYInterval = setInterval(() => {
-      console.log(this.y);
-      if (this.y >= 392.5) {
-        this.y = 392.5;
-        this.speed = 0;
-        this.acceleration = 0;
-        this.speedY = 0;
-        clearInterval(this.rotationInterval);
-        this.splashInterval = setInterval(() => {
-          this.playAnimation(this.IMAGES_SPLASH);
-        }, 175);
-        clearInterval(this.checkYInterval);
-      }
-    }, 10);
+    this.checkSplashCollisions();
   }
 
   throw() {
     this.speed =
-      world.character.movingRight || world.character.movingLeft ? 10 : 5;
+      world.character.movingRight || world.character.movingLeft ? 8 : 5;
     this.move = world.character.otherDirection ? this.moveLeft : this.moveRight;
     setInterval(() => {
       this.move();
@@ -57,69 +40,47 @@ class ThrowableObject extends MovableObject {
     this.rotationInterval = setInterval(() => {
       this.playAnimation(this.IMAGES_ROTATION);
     }, 125);
+    this.checkYInterval = setInterval(() => {
+      if (this.y >= 392.5) {
+        this.y = 392.5;
+        this.speed = 0;
+        this.acceleration = 0;
+        this.speedY = 0;
+        this.splashInterval = setInterval(() => {
+          clearInterval(this.rotationInterval);
+          this.playAnimation(this.IMAGES_SPLASH);
+        }, 175);
+        clearInterval(this.checkYInterval);
+      }
+    }, 10);
     setTimeout(() => {
-      console.log('splash');
+      let pos = world.throwableObjects.indexOf(world.bottle);
+      world.throwableObjects.splice(pos, 1);
       clearInterval(this.splashInterval);
     }, 1300);
+  }
 
-    // let pos = this.world.throwableObjects.indexOf(this.world.bottle);
-
-    // if (!this.world.character.otherDirection) {
-    //   if (!this.world.character.movingRight) {
-    //     for (let i = 0; i < this.world.intervalArray.length; i++) {
-    //       clearInterval(this.world.intervalArray[i]);
-    //     }
-    //     this.world.interval1 = setInterval(() => {
-    //       this.x += 5;
-    //       console.log("1");
-    //     }, 1000 / 100);
-    //     this.world.intervalArray.push(this.world.interval1);
-    //   }
-    //   if (this.world.character.movingRight) {
-    //     for (let i = 0; i < this.world.intervalArray.length; i++) {
-    //       clearInterval(this.world.intervalArray[i]);
-    //     }
-    //     this.world.interval2 = setInterval(() => {
-    //       this.x += 10;
-    //       console.log("2");
-    //     }, 1000 / 100);
-    //     this.world.intervalArray.push(this.world.interval2);
-    //   }
-    // }
-
-    // if (this.world.character.otherDirection) {
-    //   this.x = this.world.character.x - 30;
-    //   if (!this.world.character.movingLeft) {
-    //     for (let i = 0; i < this.world.intervalArray.length; i++) {
-    //       clearInterval(this.world.intervalArray[i]);
-    //     }
-    //     this.world.interval3 = setInterval(() => {
-    //       this.x -= 5;
-    //       console.log("3");
-    //     }, 1000 / 100);
-    //     this.world.intervalArray.push(this.world.interval3);
-    //   }
-    //   if (this.world.character.movingLeft) {
-    //     for (let i = 0; i < this.world.intervalArray.length; i++) {
-    //       clearInterval(this.world.intervalArray[i]);
-    //     }
-    //     this.world.interval4 = setInterval(() => {
-    //       this.x -= 10;
-    //       console.log("4");
-    //     }, 1000 / 100);
-    //     this.world.intervalArray.push(this.world.interval4);
-    //     // console.log(this.world.intervalArray);
-    //   }
-    // }
-
-    // setTimeout(() => {
-    //   clearInterval(interval1);
-    //   clearInterval(interval2);
-    //   clearInterval(interval3);
-    // }, 1000);
-
-    // setTimeout(() => {
-    //   this.world.throwableObjects.splice(pos, 1);
-    // }, 500);
+  checkSplashCollisions() {
+    setInterval(() => {
+      // console.log(world.bottle);
+      world.level.chickensBig.forEach((enemy) => {
+        if (world.bottle.isColliding(enemy) && !enemy.dead) {
+          enemy.deadImage();
+          setTimeout(() => {
+            let pos = world.level.chickensBig.indexOf(enemy);
+            world.level.chickensBig.splice(pos, 1);
+          }, 1000);
+        }
+      });
+      world.level.chickensSmall.forEach((enemy) => {
+        if (world.bottle.isColliding(enemy) && !enemy.dead) {
+          enemy.deadImage();
+          setTimeout(() => {
+            let pos = world.level.chickensSmall.indexOf(enemy);
+            world.level.chickensSmall.splice(pos, 1);
+          }, 1000);
+        }
+      });
+    }, 1000 / 100);
   }
 }
