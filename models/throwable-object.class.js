@@ -27,7 +27,7 @@ class ThrowableObject extends MovableObject {
     this.y = y;
     this.throw();
     this.applyGravity();
-    this.checkSplashCollisions();
+    // this.checkSplashCollisions();
   }
 
   throw() {
@@ -49,7 +49,7 @@ class ThrowableObject extends MovableObject {
         this.splashInterval = setInterval(() => {
           clearInterval(this.rotationInterval);
           this.playAnimation(this.IMAGES_SPLASH);
-        }, 175);
+        }, 90);
         clearInterval(this.checkYInterval);
       }
     }, 10);
@@ -60,7 +60,7 @@ class ThrowableObject extends MovableObject {
     }, 1300);
   }
 
-  checkSplashCollisions() {
+  static checkSplashCollisions() {
     setInterval(() => {
       // console.log(world.bottle);
       world.level.chickensBig.forEach((enemy) => {
