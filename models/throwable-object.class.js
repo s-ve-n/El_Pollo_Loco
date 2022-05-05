@@ -27,7 +27,7 @@ class ThrowableObject extends MovableObject {
     this.y = y;
     this.throw();
     this.applyGravity();
-    // this.checkSplashCollisions();
+    this.checkSplashCollisions();
   }
 
   throw() {
@@ -61,7 +61,7 @@ class ThrowableObject extends MovableObject {
     }, 1300);
   }
 
-  static checkSplashCollisions() {
+  checkSplashCollisions() {
     setInterval(() => {
       // console.log(world.bottle);
       world.level.chickensBig.forEach((enemy) => {

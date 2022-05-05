@@ -33,17 +33,11 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.D && !this.throwTimeout) {
-      if (!this.bottle) this.firstBottle = true;
       this.throwTimeout = true;
       this.bottle = new ThrowableObject(
         this.character.x + 50,
         this.character.y + 100
       );
-
-      if (this.firstBottle) {
-        ThrowableObject.checkSplashCollisions();
-        this.firstBottle = false;
-      }
       this.throwableObjects.push(this.bottle);
       setTimeout(() => {
         this.throwTimeout = false;
