@@ -46,6 +46,7 @@ class ThrowableObject extends MovableObject {
         this.speed = 0;
         this.acceleration = 0;
         this.speedY = 0;
+        world.bottle.energy = 0;
         this.splashInterval = setInterval(() => {
           clearInterval(this.rotationInterval);
           this.playAnimation(this.IMAGES_SPLASH);
@@ -64,7 +65,11 @@ class ThrowableObject extends MovableObject {
     setInterval(() => {
       // console.log(world.bottle);
       world.level.chickensBig.forEach((enemy) => {
-        if (world.bottle.isColliding(enemy) && !enemy.dead) {
+        if (
+          world.bottle.energy > 0 &&
+          world.bottle.isColliding(enemy) &&
+          !enemy.dead
+        ) {
           enemy.deadImage();
           setTimeout(() => {
             let pos = world.level.chickensBig.indexOf(enemy);
@@ -73,7 +78,11 @@ class ThrowableObject extends MovableObject {
         }
       });
       world.level.chickensSmall.forEach((enemy) => {
-        if (world.bottle.isColliding(enemy) && !enemy.dead) {
+        if (
+          world.bottle.energy > 0 &&
+          world.bottle.isColliding(enemy) &&
+          !enemy.dead
+        ) {
           enemy.deadImage();
           setTimeout(() => {
             let pos = world.level.chickensSmall.indexOf(enemy);
