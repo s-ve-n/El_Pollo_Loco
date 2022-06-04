@@ -32,7 +32,7 @@ class World {
   }
 
   checkThrowObjects() {
-    if (this.keyboard.D && !this.throwTimeout) {
+    if (this.keyboard.D && !this.throwTimeout && this.qty > 0) {
       this.throwTimeout = true;
       this.bottle = new ThrowableObject(
         this.character.x + 50,

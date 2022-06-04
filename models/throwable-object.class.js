@@ -31,34 +31,39 @@ class ThrowableObject extends MovableObject {
   }
 
   throw() {
-    this.speed =
-      world.character.movingRight || world.character.movingLeft ? 8 : 5;
-    this.move = world.character.otherDirection ? this.moveLeft : this.moveRight;
-    setInterval(() => {
-      this.move();
-    }, 1000 / 100);
-    this.rotationInterval = setInterval(() => {
-      this.playAnimation(this.IMAGES_ROTATION);
-    }, 125);
-    this.checkYInterval = setInterval(() => {
-      if (this.y >= 392.5) {
-        this.y = 392.5;
-        this.speed = 0;
-        this.acceleration = 0;
-        this.speedY = 0;
-        world.bottle.energy = 0;
-        this.splashInterval = setInterval(() => {
-          clearInterval(this.rotationInterval);
-          this.playAnimation(this.IMAGES_SPLASH);
-        }, 90);
-        clearInterval(this.checkYInterval);
-      }
-    }, 10);
-    setTimeout(() => {
-      let pos = world.throwableObjects.indexOf(world.bottle);
-      world.throwableObjects.splice(pos, 1);
-      clearInterval(this.splashInterval);
-    }, 1300);
+    if (world.qty > 0) {
+      this.speed =
+        world.character.movingRight || world.character.movingLeft ? 8 : 5;
+      this.move = world.character.otherDirection
+        ? this.moveLeft
+        : this.moveRight;
+      setInterval(() => {
+        this.move();
+      }, 1000 / 100);
+      this.rotationInterval = setInterval(() => {
+        this.playAnimation(this.IMAGES_ROTATION);
+      }, 125);
+      this.checkYInterval = setInterval(() => {
+        if (this.y >= 392.5) {
+          this.y = 392.5;
+          this.speed = 0;
+          this.acceleration = 0;
+          this.speedY = 0;
+          world.bottle.energy = 0;
+          this.splashInterval = setInterval(() => {
+            clearInterval(this.rotationInterval);
+            this.playAnimation(this.IMAGES_SPLASH);
+          }, 90);
+          clearInterval(this.checkYInterval);
+        }
+      }, 10);
+      setTimeout(() => {
+        let pos = world.throwableObjects.indexOf(world.bottle);
+        world.throwableObjects.splice(pos, 1);
+        clearInterval(this.splashInterval);
+      }, 1300);
+      world.qty--;
+    }
   }
 
   checkSplashCollisions() {
