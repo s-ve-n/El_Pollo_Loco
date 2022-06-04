@@ -123,8 +123,8 @@ class World {
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
     // setInterval(() => {
-    //   console.log(`character.x = ${this.character.x}`);
-    //   if (this.character.x == 300) {
+    //   // console.log(`character.x = ${this.character.x}`);
+    //   if (this.character.x > 300) {
     //     this.addToMap(this.statusBarHealthBoss);
     //   }
     // }, 100);
