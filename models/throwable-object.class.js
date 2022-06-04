@@ -33,7 +33,7 @@ class ThrowableObject extends MovableObject {
   throw() {
     if (world.qty > 0) {
       this.speed =
-        world.character.movingRight || world.character.movingLeft ? 8 : 5;
+        world.character.movingRight || world.character.movingLeft ? 7 : 5;
       this.move = world.character.otherDirection
         ? this.moveLeft
         : this.moveRight;

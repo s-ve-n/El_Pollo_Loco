@@ -4,6 +4,7 @@ class World {
   level = new Level();
   camera_x = 0;
   statusBarHealth = new StatusBarHealth();
+  statusBarHealthBoss = new StatusBarHealthBoss();
   bottleCounter = new BottleCounter();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
@@ -16,7 +17,14 @@ class World {
     // this.character.world = this;
     this.draw();
     this.run();
+    // this.log();
   }
+
+  // log() {
+  //   setInterval(() => {
+  //     console.log(`character.x = ${this.character.x}`);
+  //   }, 500);
+  // }
 
   run() {
     setInterval(() => {
@@ -114,6 +122,12 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
+    // setInterval(() => {
+    //   console.log(`character.x = ${this.character.x}`);
+    //   if (this.character.x == 300) {
+    //     this.addToMap(this.statusBarHealthBoss);
+    //   }
+    // }, 100);
     this.addToMap(this.bottleCounter);
     this.drawBottleCounter(this.qty);
     this.ctx.translate(this.camera_x, 0); // move the camera back
