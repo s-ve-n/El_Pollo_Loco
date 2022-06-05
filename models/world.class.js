@@ -110,7 +110,6 @@ class World {
   }
 
   draw() {
-    let runInterval = true;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0); // move the camera
     this.addObjectsToMap(this.level.backgroundObjects);
@@ -123,14 +122,9 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
-    let interval = setInterval(() => {
-      console.log(`character.x = ${this.character.x}`);
-      if (this.character.x > 300) {
-        this.addToMap(this.statusBarHealthBoss);
-        runInterval = false;
-        if (runInterval == false) clearInterval(interval);
-      }
-    }, 100);
+    if (this.character.x > 3400) {
+      this.addToMap(this.statusBarHealthBoss);
+    }
     this.addToMap(this.bottleCounter);
     this.drawBottleCounter(this.qty);
     this.ctx.translate(this.camera_x, 0); // move the camera back
