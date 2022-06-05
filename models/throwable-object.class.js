@@ -99,7 +99,6 @@ class ThrowableObject extends MovableObject {
         world.bottle.energy > 0 &&
         world.bottle.isColliding(world.level.endboss)
       ) {
-        console.log('endboss');
         world.level.endboss.hitBoss();
         world.statusBarHealthBoss.setPercent(world.level.endboss.energyBoss);
       }

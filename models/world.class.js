@@ -8,7 +8,7 @@ class World {
   bottleCounter = new BottleCounter();
   throwableObjects = [];
   ctx = canvas.getContext('2d');
-  qty = 0;
+  qty = 5;
   throwTimeout = false;
 
   constructor(canvas, keyboard) {
@@ -122,7 +122,7 @@ class World {
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // move the camera
     this.addToMap(this.statusBarHealth);
-    if (this.character.x > 3400) {
+    if (this.character.x > 3400 && this.level.endboss.energyBoss > 0) {
       this.addToMap(this.statusBarHealthBoss);
     }
     this.addToMap(this.bottleCounter);

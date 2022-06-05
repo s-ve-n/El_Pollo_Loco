@@ -49,7 +49,6 @@ class MovableObject extends DrawableObject {
   }
 
   hitBoss() {
-    console.log('hitBoss');
     this.energyBoss -= 0.25;
     if (this.energyBoss <= 0) {
       this.energyBoss = 0;
@@ -75,7 +74,7 @@ class MovableObject extends DrawableObject {
   }
 
   isDeadBoss() {
-    return this.energy == 0;
+    return this.energyBoss == 0;
   }
 
   playAnimation(images) {
