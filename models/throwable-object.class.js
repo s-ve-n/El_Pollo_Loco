@@ -95,6 +95,14 @@ class ThrowableObject extends MovableObject {
           }, 1000);
         }
       });
+      if (
+        world.bottle.energy > 0 &&
+        world.bottle.isColliding(world.level.endboss)
+      ) {
+        console.log('endboss');
+        world.level.endboss.hitBoss();
+        world.statusBarHealthBoss.setPercent(world.level.endboss.energyBoss);
+      }
     }, 1000 / 100);
   }
 }
