@@ -1,5 +1,6 @@
 class World {
   startscreen = new Startscreen();
+  gameover = new Gameover();
   character = new Character();
   level = new Level();
   camera_x = 0;
@@ -127,6 +128,9 @@ class World {
     }
     this.addToMap(this.bottleCounter);
     this.drawBottleCounter(this.qty);
+    if (this.level.endboss.gameover) {
+      this.addToMap(this.gameover);
+    }
     this.ctx.translate(this.camera_x, 0); // move the camera back
     this.ctx.translate(-this.camera_x, 0); // move the camera back
     requestAnimationFrame(() => {

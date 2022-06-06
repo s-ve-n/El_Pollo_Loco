@@ -39,10 +39,10 @@ window.addEventListener('keypress', (event) => {
 
 document.getElementById('container').addEventListener('click', () => {
   if (!gameStarted) {
-  let container = document.getElementById('container');
-  let img = document.getElementById('image');
-  container.removeChild(img);
-  world.startscreen.removeStartscreen();
-  gameStarted = true;
+    let container = document.getElementById('container');
+    let img = document.getElementById('image');
+    container.removeChild(img);
+    world.startscreen.removeStartscreen();
+    gameStarted = true;
   }
 });

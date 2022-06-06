@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
   height = 400;
   x = 4000;
   y = 55;
+  gameover = false;
 
   IMAGES_WALKING = [
     'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
@@ -65,6 +66,12 @@ class Endboss extends MovableObject {
         this.y += 50;
         timesRun2++;
         if (timesRun2 == 9) {
+          setTimeout(() => {
+            this.gameover = true;
+          }, 1000);
+          setTimeout(() => {
+            location.reload();
+          }, 4000);
           clearInterval(interval2);
         }
       }
