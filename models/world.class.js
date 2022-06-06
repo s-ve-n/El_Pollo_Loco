@@ -1,6 +1,7 @@
 class World {
   startscreen = new Startscreen();
   gameover = new Gameover();
+  gamelost = new Gamelost();
   character = new Character();
   level = new Level();
   camera_x = 0;
@@ -128,6 +129,9 @@ class World {
     }
     this.addToMap(this.bottleCounter);
     this.drawBottleCounter(this.qty);
+    if (this.character.gamelost) {
+      this.addToMap(this.gamelost);
+    }
     if (this.level.endboss.gameover) {
       this.addToMap(this.gameover);
     }
